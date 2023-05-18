@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body class="position-relative">
+<a href="#" class="scrollTop"><i class="bi bi-arrow-up-circle-fill"></i></a>
+	<%- include('./partials/navbar.ejs') %>
+	<section class='py-5 position-relative' id="banner">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 px-5">
+					<p class="lead fs-5 fw-bold">Today is</p>
+					<h1 class="display-6 fw-normal text-center text-white bg-dark px-3 py-2 rounded" id="dateToday">Sun , 00 January 0000</h1>
+					<hr>
+					<h1 class="display-2 py-3 fw-bold">TAKEOUT OUR BEST CUISINE</h1>
+					<p class="lead text-dark fs-1">We are open 24 hours</p>
+					<div class="btn-group">
+						<a class="btn btn-dark btn-lg" href='/orders'>Order Now</a>
+						<a class="btn btn-outline-dark btn-lg" href='/orders/track'>Check my Order</a>
+					</div>
+					<div class="bg-secondary d-flex p-5 my-5 justify-content-center align-items-center" style='height: 200px;'>
+						<p class='fs-1 text-white'>AdSpace</p>
+					</div>
+				</div>
+				<div class="col-md-6 mt-3 p-3">
+					<h4 class="display-4 text-dark p-3 bg-dark text-white fw-bold text-center">Satisfy your Cravings</h4>
+					<img src="./img/banner.jpg" alt="BANNER IMAGE" class='img-fluid'>
+					<p class="lead fw-normal py-3 text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="cook" class="position-relative">
+		<h1 class="display-4 text-center p-0 py-5 text-dark fw-bold">Highlights</h1>
+		<div class="container-fluid d-flex flex-column justify-content-center align-items-center p-0 p-lg-5">
+			<iframe class="w-75 h-75" style="min-height: 60vh;" src="https://www.youtube.com/embed/3K41Gh4sQbY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</section>
+
+	<section id="team" class="position-relative">
+		<div class="row m-0 d-flex justify-content-center">
+			<h1 class="display-4 text-center p-0 py-5 text-dark fw-bold">Meet the Whole Team</h1>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 px-5 text-center">
+				<img src="./img/chef.jpg" alt="Head Cook Image" class='img-fluid'>
+				<h5 class="display-6 pt-3">Balmond Phoveus</h5>
+				<p class="lead fs-4 fw-bold text-muted">Head Chef</p>
+				<p class="lead fs-5" style="text-align: justify;">Responsible for using his culinary expertise to create appetizing and main dishes for diners to enjoy. He also makes the lead and mentoring to manage the culinary team or his kitchen staffs.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 px-5 text-center">
+				<img src="./img/manager.jpg" alt="Head Cook Image" class='img-fluid'>
+				<h5 class="display-6 pt-3">Sheila R. Staton</h5>
+				<p class="lead fs-4 fw-bold text-muted">Kitchen Manager</p>
+				<p class="lead fs-5" style="text-align: justify;">She supervises kitchen duties by managing the pantry, inventory, controlling how food is stored and prepared and supervising how the customers are serviced. She is the guide on the kitchen staff to deliver quality, timely food and ensure that all customers are satisfied.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 px-5 text-center">
+				<img src="./img/staff2.jpg" alt="Head Cook Image" class='img-fluid'>
+				<h5 class="display-6 pt-3">Deborah P. Wood</h5>
+				<p class="lead fs-4 fw-bold text-muted">Kitchen Staff</p>
+				<p class="lead fs-5" style="text-align: justify;">He is responsible for cleaning all dishes, work stations, cooking equipment, and food storage areas in accordance with food safety regulations. Washing, chopping, shredding, and grating ingredients for subsequent use by the chef. Sweeping and mopping floors, as required.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 px-5 text-center">
+				<img src="./img/staff1.jpg" alt="Head Cook Image" class='img-fluid'>
+				<h5 class="display-6 pt-3">Alice W. Oconnell</h5>
+				<p class="lead fs-4 fw-bold text-muted">Kitchen Staff</p>
+				<p class="lead fs-5" style="text-align: justify;">She is responsible for cleaning all dishes, work stations, cooking equipment, and food storage areas in accordance with food safety regulations. Washing, chopping, shredding, and grating ingredients for subsequent use by the chef. Sweeping and mopping floors, as required.</p>
+			</div>			
+		</div>
+	</section>
+
+
+	<section id="about" class="position-relative">
+		<h1 class="display-4 text-center m-0 p-0 py-5 bg-dark text-white fw-bold">About us</h1>
+		<div class="container-fluid bg-dark p-5 my-0">
+			<p class='text-white fs-3'>Consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			<p class='text-white fs-3'>Adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit</p>
+		</div>
+	</section>
+
+	<section id="review">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+					<h6 class="display-6 text-center my-5">Your feedback is important to us</h6>
+				</div>
+				<div class="col-md-6 bg-dark text-white rounded p-5 my-5">
+					<form action="/" method="POST" accept-charset="utf-8">
+						<div class="mb-3">
+						  <label for="name" class="form-label">Name</label>
+						  <input type="text" class="form-control" name='name' placeholder="(e.g.) Steve Ford" id='name' maxlength="50">
+						</div>
+						<div class="mb-3">
+						  <label for="body" class="form-label">Message</label>
+						  <textarea class="form-control" name='body' id='body' rows="3" maxlength="500" placeholder="Write your message here"></textarea>
+						</div>
+						<button type='submit' class="btn btn-outline-light btn-lg">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<%- include('./partials/footer.ejs') %>
+<script type="text/javascript" charset="utf-8" async defer>
+	const dateToday = document.querySelector('#dateToday');
+
+	const today = new Date();
+
+	let mt = today.getMonth() + 1;
+	let dy = today.getDay() + 1;
+	let dt = today.getDate();
+	let yr = today.getFullYear();
+
+	let month, day, date, year;
+
+	switch (mt) {
+		case 1:
+			month = 'January';
+			break;
+		case 2:
+			month = 'February';
+			break;
+		case 3:
+			month = 'March';
+			break;
+		case 4:
+			month = 'April';
+			break;
+		case 5:
+			month = 'May';
+			break;
+		case 6:
+			month = 'June';
+			break;
+		case 7:
+			month = 'July';
+			break;
+		case 8:
+			month = 'August';
+			break;
+		case 9:
+			month = 'September';
+			break;
+		case 10:
+			month = 'October';
+			break;
+		case 11:
+			month = 'November';
+			break;
+		default:
+			month = 'December';
+			break;
+	}
+
+	switch (dy) {
+		case 1:
+			day = 'Sun';
+			break;
+		case 2:
+			day = 'Mon';
+			break;
+		case 3:
+			day = 'Tue';
+			break;
+		case 4:
+			day = 'Wed';
+			break;
+		case 5:
+			day = 'Thu';
+			break;
+		case 6:
+			day = 'Fri';
+			break;
+		default:
+			day = 'Sat';
+			break;
+	}
+
+	date = dt; year = yr;
+
+	const result = `"${day}" , ${addZero(date)} ${month} ${year}`;
+	dateToday.innerHTML = result;
+
+	function addZero(day) {
+		return day <= 9 ? `0${day}` : day;
+	}
+
+
+	const scrollTop = document.querySelector('.scrollTop');
+
+	window.addEventListener('scroll', e => {
+		const scrollY = window.scrollY;
+		if (scrollY > 10) {
+			scrollTop.classList.add('scrollShow');
+		} else {
+			scrollTop.classList.remove('scrollShow');
+		}
+	})
+
+</script>
+</body>
+</html>

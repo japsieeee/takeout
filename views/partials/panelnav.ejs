@@ -1,0 +1,36 @@
+<div class="jumbotron bg-dark text-white py-3 px-5">
+	<h3 class="d-flex justify-content-between align-items-center"><span class='display-6'><a class='text-decoration-none text-white' href="/panel"><%= tabTitle %></a></span><span><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-gear"></i></button></span></h3>
+</div>
+
+	<!-- LOGOUT MODAL -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				
+				<div class="modal-body fw-bold">
+				Are you sure you want to logout?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<a class="btn btn-primary" href="/staffs/logout">Yes, I want to logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SETTINGS OFFCANVAS -->
+
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+		<div class="offcanvas-header">
+			<h5 id="offcanvasRightLabel" class='fw-bold user-select-none'>Settings</h5>
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body p-0">
+			<div class="list-group rounded-0">
+				<img src="../img/logo.svg" class='img-fluid p-5' alt="logo image" style="height: 250px;">
+				<a class="list-group-item list-group-item-action fw-bold" href="/panel/reviews">Reviews</a>
+				<a class="list-group-item list-group-item-action fw-bold" href="/panel/orders">Orders</a>
+				<button type="button" class="list-group-item list-group-item-action fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Logout</button>
+			</div>		
+		</div>
+	</div>	

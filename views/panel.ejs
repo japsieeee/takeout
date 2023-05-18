@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+	<%- include('./partials/panelnav.ejs') %>
+
+	<% let italianPastaCount = 0; let spicyChickenWingsCount = 0; let originalCarbonaraCount = 0; let specialSaladCount = 0; %>
+
+	<% orders.forEach(order => { 									%>
+	<% for (let i = 0; i < order.food.length; i++) { 				%>
+	<% 		if (order.food[i] === "Italian Pasta") {				%>
+	<%			italianPastaCount += 185;							%>
+	<% 		} else if (order.food[i] === "Spicy Chicken Wings") {	%>
+	<%			spicyChickenWingsCount += 350;						%>
+	<% 		} else if (order.food[i] === "Original Carbonara") {	%>
+	<%			originalCarbonaraCount += 200;						%>
+	<% 		} else if (order.food[i] === "Special Salad") {  		%>
+	<%			specialSaladCount += 130;							%>
+	<%		} else {												%>
+	<% 			italianPastaCount += 0;								%>
+	<% 			spicyChickenWingsCount += 0;						%>
+	<% 			originalCarbonaraCount += 0;						%>
+	<% 			specialSaladCount += 0;								%>
+	<% 		} 														%>
+	<% } 															%>
+	<% }) 															%>
+
+	<% const totalRevenue = italianPastaCount + spicyChickenWingsCount + originalCarbonaraCount + specialSaladCount%>
+
+	<section id="chart" style="min-height: 80vh;">
+		<h1 class="display-4 text-center pt-5 fw-normal">Analytics</h1>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-7 p-5">
+					<canvas id="myChart"></canvas>
+				</div>
+				<div class="col-lg-5 p-5 p-lg-5 py-3">
+					<p class="lead fw-bold fs-3">Summary</p>
+					<p class="lead fw-normal">Italian Pasta: P <%= italianPastaCount %></p>
+					<p class="lead fw-normal">Spicy Chicken Wings: P <%= spicyChickenWingsCount %></p>
+					<p class="lead fw-normal">Original Carbonara: P <%= originalCarbonaraCount %></p>
+					<p class="lead fw-normal">Special Salad: P <%= specialSaladCount %></p>
+					<hr>
+					<p class="lead fw-bold fs-3">Total Revenue</p>
+					<p class="lead fw-bold fs-3">P <%= totalRevenue %></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Italian Pasta', 'Spicy Chicken Wings', 'Original Carbonara', 'Special Salad'],
+        datasets: [{
+            label: 'Revenue',
+            data: [<%= italianPastaCount %>, <%= spicyChickenWingsCount %>, <%= originalCarbonaraCount %>, <%=specialSaladCount %>],
+            backgroundColor: [
+                '#053742',
+                '#053742',
+                '#053742',
+                '#053742'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

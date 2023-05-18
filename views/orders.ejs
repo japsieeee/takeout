@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+	<%- include('./partials/navbar.ejs') %>
+
+	<% if (message.length > 0) { %>
+		<div class="alert alert-<%= color %> alert-dismissible fade show position-fixed top-0 w-100 text-center" role="alert" id="successAlert" style="z-index: 2;">
+		  <strong><%= message %></strong>
+		  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+
+		<script>
+			const successAlert = document.querySelector('#successAlert');
+			setTimeout(() => {
+				successAlert.style.display = 'none';
+				window.location.href = '/orders';
+			}, 15000)
+		</script>
+	<% } %>
+	<section class="position-relative">		
+
+		<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+			<div class="offcanvas-header">
+			<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<form action="/orders" method="POST" accept-charset="utf-8" id="orders">
+				<div class="d-flex flex-column justify-content-center">
+					<label for="buyer">Name</label>					
+					<input type="text" class='px-3 py-2 border-0 border-bottom border-2 border-success my-2' id='buyer' name="buyer" placeholder="(e.g) Kevin Ben">
+					<label for="contact">Contact Number</label>
+					<input type="text" class='px-3 py-2 border-0 border-bottom border-2 border-success my-2' id='contact' maxlength="20" name="contact" placeholder="(e.g) 09598624872">
+					<label for="address">Exact Address</label>
+					<input type="text" class='px-3 py-2 border-0 border-bottom border-2 border-success my-2' id='address' name="address" placeholder="(e.g) Block 42 Lot 32 Phase 2 Magdo Street Manila City">
+
+					<button type="button" class="btn btn-success btn-lg border-0 mt-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="height: 50px">Checkout Order</button>
+
+					<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title text-dark" id="staticBackdropLabel">Message</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body text-dark">
+									Continue your order?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Return</button>
+									<button type="submit" class="btn btn-success" id="postOrder">Continue</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class='my-5'>
+			</form>
+		</div>    
+	</section>
+
+	<section id="banner">
+		<div class="container-fluid bg-dark p-0 py-3 m-0 p-md-3">
+			<h1 class="display-1 text-white my-5 text-center text-capitalize">foods we offer</h1>
+			<div class="row g-2 d-flex justify-content-center">
+
+				<div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+					<div class="card p-3">
+						<div class="card-body" data-food="Italian Pasta" data-price="185.00">
+							<h1 class="card-title fs-4 d-flex justify-content-center align-items-center text-center" style="height: 50px;">Italian Pasta</h1>
+							<img src="../img/pasta.jpg" alt="food" class='img-fluid my-3'>
+							<p class="fs-1 text-center">P 185.00</p>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris</p>
+							<div class="d-flex justify-content-center">
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="decreaseQuantity">-</button>
+								<button type="button" class='btn btn-lg btn-dark' id="addOrder" disabled="true">Add to Orders</button>
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="increaseQuantity">+</button>
+							</div>
+							<p class='bg-dark text-white my-4 text-center p-2 rounded' id="orderQuantity">0</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+					<div class="card p-3">
+						<div class="card-body" data-food="Spicy Chicken Wings" data-price="350.00">
+							<h1 class="card-title fs-4 d-flex justify-content-center align-items-center text-center" style="height: 50px;">Spicy Chicken Wings</h1>
+							<img src="../img/chicken.jpg" alt="food" class='img-fluid my-3'>
+							<p class="fs-1 text-center">P 350.00</p>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris</p>
+							<div class="d-flex justify-content-center">
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="decreaseQuantity">-</button>
+								<button type="button" class='btn btn-lg btn-dark' id="addOrder" disabled="true">Add to Orders</button>
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="increaseQuantity">+</button>
+							</div>
+							<p class='bg-dark text-white my-4 text-center p-2 rounded' id="orderQuantity">0</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+					<div class="card p-3">
+						<div class="card-body" data-food="Original Carbonara" data-price="200.00">
+							<h1 class="card-title fs-4 d-flex justify-content-center align-items-center text-center" style="height: 50px;">Original Carbonara</h1>
+							<img src="../img/carbonara.jpg" alt="food" class='img-fluid my-3'>
+							<p class="fs-1 text-center">P 200.00</p>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris</p>
+							<div class="d-flex justify-content-center">
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="decreaseQuantity">-</button>
+								<button type="button" class='btn btn-lg btn-dark' id="addOrder" disabled="true">Add to Orders</button>
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="increaseQuantity">+</button>
+							</div>
+							<p class='bg-dark text-white my-4 text-center p-2 rounded' id="orderQuantity">0</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+					<div class="card p-3">
+						<div class="card-body" data-food="Special Salad" data-price="130.00">
+							<h1 class="card-title fs-4 d-flex justify-content-center align-items-center text-center" style="height: 50px;">Special Salad</h1>
+							<img src="../img/salad.jpg" alt="food" class='img-fluid my-3'>
+							<p class="fs-1 text-center">P 130.00</p>
+							<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris</p>
+							<div class="d-flex justify-content-center">
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="decreaseQuantity">-</button>
+								<button type="button" class='btn btn-lg btn-dark' id="addOrder" disabled="true">Add to Orders</button>
+								<button type='button' class="btn btn-outline-dark btn-sm mx-2 fw-bold fs-1 w-25" id="increaseQuantity">+</button>
+							</div>
+							<p class='bg-dark text-white my-4 text-center p-2 rounded' id="orderQuantity">0</p>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		<div class='d-flex justify-content-center py-3'>
+			<button class="btn btn-success btn-lg" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop" style="height: 50px;">View my Selected Orders</button>
+		</div>
+	</section>
+
+<%- include('./partials/footer.ejs') %>
+<script type="text/javascript" charset="utf-8" async defer>
+
+	const addOrderBtn = document.querySelectorAll('#addOrder');
+
+	// user set order container
+	const orders = document.querySelector('#orders');
+
+	addOrderBtn.forEach(btn => {
+		btn.addEventListener('click', e => {
+			const food = e.target.parentElement.parentElement.dataset.food;
+			const price = e.target.parentElement.parentElement.dataset.price;
+			let qty = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+			let resetQty = e.target.parentElement.nextSibling.nextSibling;
+			const input1 = document.createElement('input');
+			const input2 = document.createElement('input');
+			const input3 = document.createElement('input');
+			const div1 = document.createElement('div');
+			const p1 = document.createElement('p');
+			const p2 = document.createElement('p');
+			const button = document.createElement('button');
+			const span1 = document.createElement('span');
+
+			if (qty <= 0) {
+				// console.log('No order');
+			} else {
+				// setting attributes of created element
+				div1.setAttribute('class', 'px-4 py-3 bg-light text-primary rounded my-1');
+
+				p1.setAttribute('class', 'fs-4 fw-bold text-center');
+				p2.setAttribute('class', 'fs-5 mt-5 py-3 border-top border-2 border-primary d-flex justify-content-between');
+
+				input1.setAttribute('type', 'hidden');
+				input1.setAttribute('value', food);
+				input1.setAttribute('name', 'food');
+				input2.setAttribute('type', 'hidden');
+				input2.setAttribute('value', qty);
+				input2.setAttribute('name', 'quantity');
+				input3.setAttribute('type', 'hidden');
+				input3.setAttribute('value', price * qty);
+				input3.setAttribute('name', 'price');
+
+				span1.setAttribute('class', 'badge bg-primary text-white p-3');
+
+				button.setAttribute('class', 'btn btn-outline-danger btn-md');
+				button.setAttribute('type', 'button');
+				button.setAttribute('id', 'removeOrder');
+
+				// setting context of created element
+				p1.innerHTML = `${food} x ${qty}`;
+				p2.innerHTML = 'Price:';
+
+				span1.innerHTML = 'P ' + price * qty + '.00';
+
+				button.innerHTML = 'Remove';
+
+				// inserting all created elements to div
+				p2.appendChild(span1);
+
+				div1.appendChild(p1);
+				div1.appendChild(button);
+				div1.appendChild(p2);
+
+				// appending div to user set order container
+				orders.appendChild(div1);
+				orders.appendChild(input1);
+				orders.appendChild(input2);
+				orders.appendChild(input3);
+				resetQty.innerHTML = 0;
+			}
+
+			// ERROR
+			const removeOrder = document.querySelectorAll('#removeOrder');
+			removeOrder.forEach(btn => {
+				btn.addEventListener('click', e => {
+					const container = e.target.parentElement;
+					container.parentElement.removeChild(container);
+				})
+			})	
+		})
+	})
+
+	// Increase and Decrease the quantity of the order food
+	const increaseQuantityBtn = document.querySelectorAll('#increaseQuantity');
+	const decreaseQuantityBtn = document.querySelectorAll('#decreaseQuantity');
+
+	increaseQuantityBtn.forEach(btn => {
+		btn.addEventListener('click', e => {
+			// count of food quantity
+			let count = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+			let qty = e.target.parentElement.nextSibling.nextSibling;
+			count++;
+			qty.innerHTML = count;
+
+			const orderBtn = e.target.previousSibling.previousSibling;
+			
+			if (count >= 0) {
+				orderBtn.removeAttribute('disabled', 'true');
+			} else {
+				orderBtn.setAttribute('disabled');
+			}
+		})
+	})
+
+	decreaseQuantityBtn.forEach(btn => {
+		btn.addEventListener('click', e => {
+			// count of food quantity
+			let count = e.target.parentElement.nextSibling.nextSibling.innerHTML;
+			let qty = e.target.parentElement.nextSibling.nextSibling;
+
+			const orderBtn = e.target.nextSibling.nextSibling;
+
+			count--;
+
+			if (count <= 0) {
+				count = 0;
+				qty.innerHTML = count;
+				orderBtn.setAttribute('disabled', 'true');
+			} else {
+				orderBtn.removeAttribute('disabled');
+				qty.innerHTML = count;
+			}
+		})
+	})
+	// post order
+
+	// const postOrder = document.querySelector('#postOrder');
+
+</script>
+</body>
+</html>

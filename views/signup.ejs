@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+
+	<div class="jumbotron">
+		<h1 class="bg-dark text-white d-flex justify-content-between align-items-center py-5 px-5"><span class='display-5'>Signup</span>	<a href='/' class="btn btn-outline-light btn-lg">Return</a></h1>
+	</div>
+
+	<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 80vh;">
+		<form id="signupForm" method="POST" accept-charset="utf-8" class='p-5 border border-1 rounded'>
+			<div id='usernameExist' class='text-center pb-5 fw-bold text-primary'></div>
+			<div class="mb-3">
+				<div id='usernameError' class='text-center text-danger'></div>
+				<label for="username" class="form-label">Username</label>
+				<input type="text" class="form-control" id="username" name="username" required>
+			</div>
+			<div class="mb-3">
+				<div id='passwordError' class='text-center text-danger'></div>
+				<label for="password" class="form-label">Password</label>
+				<input type="password" class="form-control" id="password" name="password" required>
+			</div>			
+			<div class="d-flex justify-content-center">
+				<button class="btn btn-secondary">Signup</button>
+			</div>
+		</form>
+	</div>
+<script>
+
+	const signupForm = document.querySelector('#signupForm');
+	let usernameError = document.querySelector('#usernameError');
+	let passwordError = document.querySelector('#passwordError');
+	let usernameExist = document.querySelector('#usernameExist');
+
+	signupForm.addEventListener('submit', async e => {
+		e.preventDefault();
+		let username = signupForm.username.value.toLowerCase();
+		let password = signupForm.password.value;
+		const obj = JSON.stringify({username, password});
+		
+		const result = await fetch('/staffs/signup', {
+			method: 'POST',
+			headers: { "Content-Type": "application/json" },
+			body: obj
+		})
+
+		const data = await result.json();
+
+		if (data.hasOwnProperty('_id')) {
+			usernameExist.textContent = "Successfuly Signed up";
+			usernameError.textContent = "";
+			passwordError.textContent = "";
+			signupForm.username.value = "";
+			signupForm.password.value = "";
+		} else if (data.hasOwnProperty('username') && data.hasOwnProperty('password')) {
+			usernameError.textContent = data.username.message;
+			passwordError.textContent = data.password.message;
+			usernameExist.textContent = "";
+		} else if (data.hasOwnProperty('error')) {
+			usernameError.textContent = "";
+			passwordError.textContent = "";
+			usernameExist.textContent = data.error;
+		}
+		
+	})
+
+</script>
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

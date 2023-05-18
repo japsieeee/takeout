@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+	--title: 'Open Sans Condensed', sans-serif;
+	--text: Quicksand, sans-serif;
+	--color1: #444941;
+	--color2: #5F7A61;
+	--color3: #D5EEBB;
+	--color4: #7FC8A9;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: var(--text);
+}
+
+/* Page 404 */
+
+.container-404 {
+	height: 100vh;
+	width: 100%;
+	background: var(--color1);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-404 .title {
+	color: var(--color3);
+	font-family: var(--title);
+	font-size: 5vmax;
+}
+
+.container-404 .subtitle {
+	color: var(--color3);
+	font-family: var(--title);
+	font-size: 1.5vmax;
+}
+
+.container-404 a {
+	font-family: var(--title);
+	text-decoration: none;
+	font-size: 2vmax;
+	padding: 1vh 4vw;
+	margin: 2vh 0;
+	background: var(--color3);
+	border: 1px solid var(--color3);
+	color: var(--color1);
+}
+
+.container-404 a:hover {
+	transition-duration: .2s;
+	background: none;
+	border: 1px solid var(--color3);
+	color: var(--color3);
+}
+
+#soc-links:hover {
+	transition-duration: .2s;
+	transform: scale(2, 2);
+	color: red !important;
+}
+
+.scrollTop {
+	position: fixed;
+	bottom: 10px;
+	left: 0px;
+	opacity: 0;
+	visibility: hidden;
+	font-size: 5vmax;
+	z-index: 100;
+	cursor: pointer;
+	transition-duration: .5s;
+}
+
+.scrollShow {
+	transition-duration: .5s;
+	bottom: 10px;
+	left: 20px;
+	opacity: 1;
+	visibility: visible;
+}

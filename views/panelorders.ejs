@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+	<%- include('./partials/panelnav.ejs') %>
+
+	<section id="orders">
+		<div class="container p-0 mt-5" style="min-height: 80vh;">
+
+
+			<% orders.forEach(order => { %>
+				<div class="list-group rounded-0 mb-3">
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1 fw-bold fs-3"><%= order.buyer %> Order</h5>
+							<small class="text-muted"><%= order.oid %></small>
+						</div>
+						<p class="mb-1"><span class='fw-normal'>Contact No: </span><%= order.contact %></p>
+						<p class="mb-1"><span class='fw-normal'>Address: </span><%= order.address %></p>
+
+						<hr class='border border-2 border-primary'>
+
+						<p class="mb-1 fw-bold">Orders</p>
+
+						<% for (let i = 0; i < order.food.length; i++) { %>
+							<p class="mb-1"><%= order.food[i] %> <span class="badge bg-primary text-white"><%= order.quantity[i] %></span></p>
+						<% } %>
+
+						<hr class='border border-2 border-primary'>
+						<p class="mb-1"><span class='fw-bold'>Status: </span><%= order.status %></p>
+						<p class="mb-1 fw-bold d-flex justify-content-between"><span>Total</span><span>P <%= order.price %>.00</span></p>
+
+						<hr class='border border-2 border-primary'>
+
+						<p class="mb-1 fw-bold">Update Status</p>
+						<form action="/panel/orders/<%= order._id %>" method="POST" accept-charset="utf-8" class="d-flex justify-content-between">
+							<select class="form-select" aria-label="Default select example" name="status">
+								<option selected>Select Status</option>
+								<option value="PENDING">PENDING</option>
+								<option value="PROCESSING">PROCESSING</option>
+								<option value="DELIVERING">DELIVERING</option>
+								<option value="DELIVERED">DELIVERED</option>
+							</select>						
+							<button type="submit" class='btn btn-primary btn-md'>Save</button>					
+						</form>
+						<small class="text-muted my-3 text-center d-block"><%= order.createdAt %></small>
+					</div>
+				</div>	
+			<% }) %>
+
+
+
+		</div>
+	</section>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

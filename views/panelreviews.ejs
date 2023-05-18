@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head.ejs') %>
+<body>
+	<%- include('./partials/panelnav.ejs') %>
+
+	<section id="reviews" class="py-2 px-md-5">
+		<div class="container-fluid m-0 p-0" style="min-height: 80vh">
+
+			<% if (reviews.length <= 0) { %>
+				<h1 class="display-1 text-center mt-5">No Reviews to display</h1>
+				<p class="lead fw-normal text-center">Be careful on deleting reviews. Once you click it, it won't ask you for confirmation.</p>
+			<% } else { %>
+				<% reviews.forEach(review => { %>
+					<dl class="row bg-dark m-0 my-1 p-4 text-white">
+						<dt class="col-sm-3">From</dt>
+						<dd class="col-sm-9">
+							<%= review.name %>
+						</dd>
+						<dt class="col-sm-3">Message</dt>
+						<dd class="col-sm-9">
+							<p><%= review.body %></p>
+						</dd>
+						<div class="d-flex justify-content-end">
+							<form action="/panel/reviews/<%= review._id %>" method="POST" accept-charset="utf-8" id="deleteReviewForm">
+								<button type="submit" class="btn btn-danger" id="deleteReviewBtn"><i class="bi bi-trash fs-4"></i></button>							
+							</form>
+						</div>
+					</dl>
+				<% }) %>
+			<% } %>
+
+		</div>
+	</section>
+<%- include('./partials/footer.ejs') %>
+<script>
+
+</script>
+</body>
+</html>
